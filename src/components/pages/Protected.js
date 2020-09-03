@@ -6,15 +6,6 @@ const Home = () => {
   const { authState, authService } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
 
-  // NEEDED FOR PROTECTED API CALLS
-  // set default http requests to have Bearer accessToken in Authorization Header
-  const setAuthTokenHeader = () => {
-    const { accessToken } = authState;
-
-    axios.defaults.headers.common = {
-      Authorization: `Bearer ${accessToken}`,
-    };
-  };
   useEffect(() => {
     if (!authState.isAuthenticated) {
       // When user isn't authenticated, forget any user info
@@ -23,9 +14,12 @@ const Home = () => {
       authService.getUser().then((info) => {
         setUserInfo(info);
       });
-
-      // must call to set default http requests to have Bearer accessToken in Authorization Header
-      setAuthTokenHeader();
+      // NEEDED FOR PROTECTED API CALLS
+      // set default http requests to have Bearer accessToken in Authorization Header
+      const { accessToken } = authState;
+      axios.defaults.headers.common = {
+        Authorization: `Bearer ${accessToken}`,
+      };
 
       // test call to show Bearer token is set
       axios.get('https://jsonplaceholder.typicode.com/users');

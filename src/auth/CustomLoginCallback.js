@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useOktaAuth } from '@okta/okta-react';
-import axios from 'axios';
 const CustomLoginCallback = () => {
   const { authService, authState } = useOktaAuth();
   const history = useHistory();
