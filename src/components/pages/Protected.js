@@ -1,6 +1,7 @@
 import { useOktaAuth } from '@okta/okta-react';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import setAuthToken from '../../auth/setAuthToken';
 
 const Home = () => {
   const { authState, authService } = useOktaAuth();
@@ -17,9 +18,7 @@ const Home = () => {
       // NEEDED FOR PROTECTED API CALLS
       // set default http requests to have Bearer accessToken in Authorization Header
       const { accessToken } = authState;
-      axios.defaults.headers.common = {
-        Authorization: `Bearer ${accessToken}`,
-      };
+      setAuthToken(accessToken);
 
       // test call to show Bearer token is set
       axios.get('https://jsonplaceholder.typicode.com/users');

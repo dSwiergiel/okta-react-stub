@@ -1,6 +1,6 @@
-const CLIENT_ID = '0oa3yiezgghl6jUXJ297';
+const CLIENT_ID = '0oa4q3u5qr7BWh8yU297';
 const ISSUER = 'https://login-qa.ny.gov/oauth2/default';
-const REDIRECTURI = 'http://localhost:4200/callback';
+const REDIRECTURI = 'http://localhost:3001/callback';
 const LOGOUTURI = '/';
 const OKTA_TESTING_DISABLEHTTPSCHECK = false;
 
