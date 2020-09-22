@@ -13,21 +13,19 @@ import Profile from './components/pages/Profile';
  */
 function Routes() {
   return (
-    <Router>
-      <Security {...oktaConfig.oidc}>
-        <Switch>
-          <Route exact path='/' component={Home}></Route>
-          <Route path='/callback' component={CustomLoginCallback}></Route>
-          {/* uncomment if you want user to be authenticated as soon as they enter the app. 
+    <Security {...oktaConfig.oidc}>
+      <Switch>
+        <Route exact path='/' component={Home}></Route>
+        <Route path='/callback' component={CustomLoginCallback}></Route>
+        {/* uncomment if you want user to be authenticated as soon as they enter the app. 
           All protected routes must be made with the SecureRoute component*/}
-          {/* <SecureRoute path='/'>
+        {/* <SecureRoute path='/'>
             <Redirect to='/protected' component={Protected} />
           </SecureRoute> */}
-          <SecureRoute path='/protected' component={Protected}></SecureRoute>
-          <SecureRoute path='/profile' component={Profile}></SecureRoute>
-        </Switch>
-      </Security>
-    </Router>
+        <SecureRoute path='/protected' component={Protected}></SecureRoute>
+        <SecureRoute path='/profile' component={Profile}></SecureRoute>
+      </Switch>
+    </Security>
   );
 }
 

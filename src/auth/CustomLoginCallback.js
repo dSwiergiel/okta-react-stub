@@ -10,7 +10,6 @@ const CustomLoginCallback = () => {
       setTimeout(() => {
         history.push('/');
       }, 10000);
-    } else {
     }
     // eslint-disable-next-line
   }, [authService]);
